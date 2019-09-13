@@ -3,8 +3,6 @@ package pierreHamy.formationOcto;
 public class Basket {
     private int[] booksTab = new int[]{0,0,0,0,0,};
 
-    private Double totalPrice = new Double(0);
-    private final static Double UNITARY_BOOK_PRICE = new Double(8);
 
     public Basket() {
     }
@@ -20,16 +18,16 @@ public class Basket {
     public int[] getBooksTab() {
         return this.booksTab;
     }
-    public Double getTotalPrice() {
-        totalPrice = booksTab[0] * UNITARY_BOOK_PRICE
-                + booksTab[1] * UNITARY_BOOK_PRICE
-                + booksTab[2] * UNITARY_BOOK_PRICE
-                + booksTab[3] * UNITARY_BOOK_PRICE
-                + booksTab[4] * UNITARY_BOOK_PRICE;
-
-        return this.totalPrice;
-
-    }
+//    public Double getTotalPrice() {
+//        totalPrice = booksTab[0] * UNITARY_BOOK_PRICE
+//                + booksTab[1] * UNITARY_BOOK_PRICE
+//                + booksTab[2] * UNITARY_BOOK_PRICE
+//                + booksTab[3] * UNITARY_BOOK_PRICE
+//                + booksTab[4] * UNITARY_BOOK_PRICE;
+//
+//        return this.totalPrice;
+//
+//    }
 
     public Boolean hasNDifferentBooks(int numberOfDifferentBookExpeted) {
         boolean hasNDifferentBooks = false;

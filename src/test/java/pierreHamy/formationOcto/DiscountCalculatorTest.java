@@ -86,4 +86,42 @@ public class DiscountCalculatorTest {
         assertEquals(2, nb20percentsDiscount);
     }
 
+
+    @Test
+    public void PriceShouldBe0_WhenEmpty() {
+        //Given
+        DiscountCalculator discountCalculator = new DiscountCalculator();
+        Basket emptyBasket = new Basket();
+        discountCalculator.setBasket(emptyBasket);
+        //When
+        double totalPrice = discountCalculator.getTotalPrice();
+
+
+        //Then
+        assertEquals(0,totalPrice);
+    }
+    @Test
+    public void PriceShouldBe_8_When1BookA() {
+        //Given
+        Basket basket = new Basket(1, 0, 0, 0, 0);
+        DiscountCalculator discountCalculator = new DiscountCalculator();
+        discountCalculator.setBasket(basket);
+        //When
+        double totalPrice = discountCalculator.getTotalPrice();
+
+        //Then
+        assertEquals(8, totalPrice);
+    }
+    @Test
+    public void PriceShouldBe_16_When2BookA() {
+        //Given
+        Basket basket = new Basket(2, 0, 0, 0, 0);
+        DiscountCalculator discountCalculator = new DiscountCalculator();
+        discountCalculator.setBasket(basket);
+        //When
+        double totalPrice = discountCalculator.getTotalPrice();
+
+        //Then
+        assertEquals(16, totalPrice);
+    }
 }
