@@ -1,11 +1,7 @@
 package pierreHamy.formationOcto;
 
 public class Basket {
-    private Integer nbBookA = 0;
-    private Integer nbBookB = 0;
-    private Integer nbBookC = 0;
-    private Integer nbBookD = 0;
-    private Integer nbBookE = 0;
+    private int[] booksTab = new int[]{0,0,0,0,0,};
 
     private Double totalPrice = new Double(0);
     private final static Double UNITARY_BOOK_PRICE = new Double(8);
@@ -13,22 +9,47 @@ public class Basket {
     public Basket() {
     }
 
-    public Basket(Integer nbBookA, Integer nbBookB, Integer nbBookC, Integer nbBookD, Integer nbBookE) {
-        this.nbBookA = nbBookA;
-        this.nbBookB = nbBookB;
-        this.nbBookC = nbBookC;
-        this.nbBookD = nbBookD;
-        this.nbBookE = nbBookE;
+    public Basket(int nbBookA, int nbBookB, int nbBookC, int nbBookD, int nbBookE) {
+        this.booksTab[0] = nbBookA;
+        this.booksTab[1] = nbBookB;
+        this.booksTab[2] = nbBookC;
+        this.booksTab[3] = nbBookD;
+        this.booksTab[4] = nbBookE;
+
+    }
+    public int[] getBooksTab() {
+        return this.booksTab;
+    }
+    public Double getTotalPrice() {
+        totalPrice = booksTab[0] * UNITARY_BOOK_PRICE
+                + booksTab[1] * UNITARY_BOOK_PRICE
+                + booksTab[2] * UNITARY_BOOK_PRICE
+                + booksTab[3] * UNITARY_BOOK_PRICE
+                + booksTab[4] * UNITARY_BOOK_PRICE;
+
+        return this.totalPrice;
 
     }
 
-    public Double getTotalPrice() {
-        totalPrice = nbBookA * UNITARY_BOOK_PRICE
-                + nbBookB * UNITARY_BOOK_PRICE
-                + nbBookC * UNITARY_BOOK_PRICE
-                + nbBookD * UNITARY_BOOK_PRICE
-                + nbBookE * UNITARY_BOOK_PRICE;
-        return totalPrice;
+    public Boolean hasNDifferentBooks(int numberOfDifferentBookExpeted) {
+        boolean hasNDifferentBooks = false;
+        int nbDifferentBook = 0;
+        for(int book = 0; book < booksTab.length; book++) {
+            if (booksTab[book] > 0 ) {
+                nbDifferentBook += 1;
+            }
+        }
+        if (nbDifferentBook >= numberOfDifferentBookExpeted) {
+            hasNDifferentBooks = true;
+        }
+        return hasNDifferentBooks;
+    }
 
+    public void setNumberOfBook(int book, int numberOfBook) {
+        booksTab[book] = numberOfBook;
+    }
+
+    public int getNumberOfBook(int book) {
+        return booksTab[book];
     }
 }
